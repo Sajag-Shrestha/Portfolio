@@ -1,6 +1,6 @@
 
 Database Create
-dbName: safal
+dbName: sajag
 
 tables:
 
