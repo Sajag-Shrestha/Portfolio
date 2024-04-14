@@ -9,19 +9,20 @@
 
   if (isset($_POST['register'])) {
 
+    $icon = $_POST['icon'];
     $title = $_POST['title'];
     $description = $_POST['description'];
     
 
-    if ($title != "" && $description != "") {
-      $insert = "INSERT INTO skills(title, description)
-VALUES('$title', '$description')";
+    if ($icon!="" && $title != "" && $description != "") {
+      $insert = "INSERT INTO services(icon, title, description)
+VALUES('$icon', '$title', '$description')";
       $result = mysqli_query($con, $insert);
 
       if ($result) {
   ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Skill Added</strong>
+          <strong>Service Added</strong>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       <?php
@@ -29,7 +30,7 @@ VALUES('$title', '$description')";
       } else {
       ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Skill not added</strong>
+          <strong>Service not added</strong>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
   <?php
@@ -48,12 +49,12 @@ VALUES('$title', '$description')";
 
   ?>
   <div class="pagetitle">
-    <h1>Add Skill</h1>
+    <h1>Add Service</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Skills</li>
-        <li class="breadcrumb-item active">Add Skill</li>
+        <li class="breadcrumb-item">Services</li>
+        <li class="breadcrumb-item active">Add Service</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -64,10 +65,14 @@ VALUES('$title', '$description')";
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Add Skill</h5>
+            <h5 class="card-title">Add Service</h5>
 
             <!-- Multi Columns Form -->
             <form class="row g-3" method="POST" enctype="multipart/form-data">
+              <div class="col-md-12">
+                <label for="inputName5" class="form-label">Icon</label>
+                <input type="text" class="form-control" name="icon" id="inputName5">
+              </div>
               <div class="col-md-12">
                 <label for="inputName5" class="form-label">Title</label>
                 <input type="text" class="form-control" name="title" id="inputName5">
@@ -76,7 +81,7 @@ VALUES('$title', '$description')";
                 <label for="inputName5" class="form-label">Description</label>
                 <textarea class="form-control" id="inputName5" name="description" rows="3"></textarea>
               </div>
-             
+              
               <div class="col-md-12">
                 <button type="submit" name="register" class="btn btn-primary">Submit</button>
               </div>

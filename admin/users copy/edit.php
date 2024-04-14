@@ -7,12 +7,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Manage Skills</h1>
+    <h1>Manage Contacts</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Skills</li>
-        <li class="breadcrumb-item active">Manage Skills > Edit</li>
+        <li class="breadcrumb-item">Contacts</li>
+        <li class="breadcrumb-item active">Manage Contacts > Edit</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -23,7 +23,7 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between">
-              <h5 class="card-title">Manage Skills</h5>
+              <h5 class="card-title">Manage Contacts</h5>
               <a class="fs-3" href="index.php" role="button"><i class="fa-solid fa-circle-chevron-left"></i></a>
             </div>
 
@@ -32,23 +32,25 @@
             if (isset($_GET['id'])) {
               $id = $_GET['id'];
 
-              $data = "SELECT * FROM skills where id='$id'";
+              $data = "SELECT * FROM contacts where id='$id'";
               $data_result = mysqli_query($con, $data);
               $fetch_data = mysqli_fetch_assoc($data_result);
             }
 
             if (isset($_POST['register'])) {
-              $title = $_POST['title'];
-              $description = $_POST['description'];
+              $name = $_POST['name'];
+              $email = $_POST['email'];
+              $subject = $_POST['subject'];
+              $message = $_POST['message'];
 
-              if ($title != "" && $description != "") {
-                $insert = "UPDATE skills SET title='$title', description='$description' where id='$id'";
+              if ($name != "" && $email != "" && $subject != "" && $message != "") {
+                $insert = "UPDATE contacts SET name='$name', email='$email', subject='$subject', message='$message' where id='$id'";
                 $result = mysqli_query($con, $insert);
 
                 if ($result) {
             ?>
                   <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Skill Updated</strong>
+                    <strong>Contact is Updated</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                 <?php
@@ -56,7 +58,7 @@
                 } else {
                 ?>
                   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Skill was not Updated</strong>
+                    <strong>Contact is not Updated</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
             <?php
@@ -69,15 +71,22 @@
 
             ?>
             <form action="" method="POST" enctype="multipart/form-data">
-              <div class="mb-3">
-                <label for="input1" class="form-label">Title</label>
-                <input type="text" class="form-control" name="title" value="<?php echo  $fetch_data['title']; ?>" id="input1" aria-describedby="emailHelp">
+              <div class="col-md-6">
+                <label for="input1" class="form-label">Name</label>
+              <input type="text" class="form-control" name="name" value="<?php echo  $fetch_data['name']; ?>" id="input1" aria-describedby="emailHelp">
               </div>
-              <div class="mb-3">
-                <label for="input1" class="form-label">Description</label>
-                <textarea class="form-control" id="input1" name="description" rows="3"><?php echo $fetch_data['description'] ?></textarea>
+              <div class="col-md-6">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" value="<?php echo  $fetch_data['email']; ?>" id="exampleInputEmail1" aria-describedby="emailHelp">
               </div>
-        
+              <div class="col-md-12">
+                <label for="input1" class="form-label">Subject</label>
+                <input type="text" class="form-control" name="subject" value="<?php echo  $fetch_data['subject']; ?>" id="input1" aria-describedby="emailHelp">
+              </div>
+              <div class="col-md-12">
+                <label for="input1" class="form-label">Message</label>
+                <textarea class="form-control" id="input1" name="message" rows="3"><?php echo $fetch_data['message'] ?></textarea>
+              </div>
               <button type="submit" class="btn btn-danger btn-sm" name="register">Submit</button>
             </form>
 

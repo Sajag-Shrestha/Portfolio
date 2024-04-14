@@ -48,7 +48,7 @@
               $description = $_POST['description'];
 
               // submit previous file
-              if ($title != "" && $title != "$title" && $file_name == "" && $description != "" && $description != "$description") {
+              if ($title != "" && $file_name == "" && $description != "") {
                 $querry = "UPDATE  files  SET  title='$title', description='$description' WHERE id='" . $id . "'";
 
                 $result = mysqli_query($con, $querry);
@@ -59,7 +59,7 @@
               }
 
               // submit new file & replace old file
-              if ($title != "" && $file_name != "" && $description != "") {
+              if ($title != "" && $file_name != "" && $description != "" ) {
 
                 if ($file_size > 2000000) {
                   $explode = explode('.', $file_name); // explode cuts the name after the dot.
@@ -113,7 +113,18 @@
                 <?php
 
                 }
-              } else {
+              } 
+              
+              elseif($title != "" && $description != "" && $title != "$title" && $description != "$description"){
+                ?>
+                <div class="alert alert-primary" role="alert">
+                  Title and Description updated
+                </div>
+
+            <?php
+              }
+
+              else {
                 ?>
                 <div class="alert alert-primary" role="alert">
                   No Updates Were Made

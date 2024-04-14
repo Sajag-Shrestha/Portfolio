@@ -8,12 +8,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Manage Skills</h1>
+    <h1>Manage Services</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Skills</li>
-        <li class="breadcrumb-item active">Manage Skills</li>
+        <li class="breadcrumb-item">Services</li>
+        <li class="breadcrumb-item active">Manage Services</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -35,7 +35,7 @@
     if (isset($_GET['delete'])) {
   ?>
     <div class=" container alert alert-success alert-dismissible fade show" role="alert">
-      <strong>Skill Removed!</strong>
+      <strong>Service Removed!</strong>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <?php
@@ -49,13 +49,14 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Manage Skills</h5>
+            <h5 class="card-title">Manage Services</h5>
 
             <!-- Table with stripped rows -->
             <table class="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
+                  <th scope="col">Icon</th>
                   <th scope="col">Title</th>
                   <th scope="col">Description</th>
                   <th scope="col">Action</th>
@@ -63,18 +64,19 @@
               </thead>
               <tbody>
                 <?php
-                $select = "SELECT * FROM skills";
+                $select = "SELECT * FROM services";
                 $result = mysqli_query($con, $select);
                 $i = 0;
                 while ($data = mysqli_fetch_array($result)) {
                 ?>
                   <tr>
                     <th scope="row"><?php echo ++$i; ?></th>
+                    <td><i class="fa solid fa-<?php echo $data['icon']; ?>"></i></td>
                     <td><?php echo $data['title']; ?></td>
                     <td><?php echo $data['description']; ?></td>
                     <td>
                       <a class="btn btn-primary btn-sm " href="edit.php?id=<?php echo $data['id']; ?>" role="button">Edit </a>
-                      <a class="btn btn-danger btn-sm " onclick="return confirm('Do you want to remove this skill??');" href="delete.php?id=<?php echo $data['id']; ?>" role="button">Delete </a>
+                      <a class="btn btn-danger btn-sm " onclick="return confirm('Do you want to remove this service??');" href="delete.php?id=<?php echo $data['id']; ?>" role="button">Delete </a>
                     </td>
                   </tr>
                 <?php

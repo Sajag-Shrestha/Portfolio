@@ -91,7 +91,7 @@ COMMIT;
 DROP TABLE IF EXISTS `facts`;
 CREATE TABLE IF NOT EXISTS `facts` (
   `id` int(11) NOT NULL AUTO_INCREMENT ,
-  `numbers` int(11) NOT NULL,
+  `numbers` varchar(30) NOT NULL,
   `title` varchar(30) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
    `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -121,7 +121,7 @@ COMMIT;
 DROP TABLE IF EXISTS `services`;
 CREATE TABLE IF NOT EXISTS `services` (
   `id` int(11) NOT NULL AUTO_INCREMENT ,
-  `icon` varchar(255) NOT NULL,
+  `icon` varchar(50) NOT NULL,
   `title` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
