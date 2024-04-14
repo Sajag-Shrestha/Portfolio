@@ -8,7 +8,7 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="index.php">Home</a></li>
+          <li><a href="index.php">Home</a></li>
           <li><a href="about.php">About</a></li>
           <li><a href="resume.php">Resume</a></li>
           <li><a href="services.php">Services</a></li>

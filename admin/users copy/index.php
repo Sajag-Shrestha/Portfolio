@@ -8,12 +8,12 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Manage Skills</h1>
+    <h1>Manage Contacts</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Skills</li>
-        <li class="breadcrumb-item active">Manage Skills</li>
+        <li class="breadcrumb-item">Contacts</li>
+        <li class="breadcrumb-item active">Manage Contacts</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -35,7 +35,7 @@
     if (isset($_GET['delete'])) {
   ?>
     <div class=" container alert alert-success alert-dismissible fade show" role="alert">
-      <strong>Skill Removed!</strong>
+      <strong>Contact is Deleted!</strong>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <?php
@@ -49,32 +49,36 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Manage Skills</h5>
+            <h5 class="card-title">Manage Contacts</h5>
 
             <!-- Table with stripped rows -->
             <table class="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Description</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Message</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
-                $select = "SELECT * FROM skills";
+                $select = "SELECT * FROM contacts";
                 $result = mysqli_query($con, $select);
                 $i = 0;
                 while ($data = mysqli_fetch_array($result)) {
                 ?>
                   <tr>
                     <th scope="row"><?php echo ++$i; ?></th>
-                    <td><?php echo $data['title']; ?></td>
-                    <td><?php echo $data['description']; ?></td>
+                    <td><?php echo $data['name']; ?></td>
+                    <td><?php echo $data['email']; ?></td>
+                    <td><?php echo $data['subject']; ?></td>
+                    <td><?php echo $data['message']; ?></td>
                     <td>
                       <a class="btn btn-primary btn-sm " href="edit.php?id=<?php echo $data['id']; ?>" role="button">Edit </a>
-                      <a class="btn btn-danger btn-sm " onclick="return confirm('Do you want to remove this skill??');" href="delete.php?id=<?php echo $data['id']; ?>" role="button">Delete </a>
+                      <a class="btn btn-danger btn-sm " onclick="return confirm('Do you want to delete this contact??');" href="delete.php?id=<?php echo $data['id']; ?>" role="button">Delete </a>
                     </td>
                   </tr>
                 <?php

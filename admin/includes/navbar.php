@@ -2,8 +2,8 @@
  <header id="header" class="header fixed-top d-flex align-items-center">
 
 <div class="d-flex align-items-center justify-content-between">
-  <a href="index.html" class="logo d-flex align-items-center">
-    <img src="assets/img/logo.png" alt="">
+  <a href="../index.php" class="logo d-flex align-items-center">
+    <img src="../assets/img/logo.png" alt="">
     <span class="d-none d-lg-block">Sajag</span>
   </a>
   <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -74,7 +74,7 @@
         </li>
 
         <li>
-          <a class="dropdown-item d-flex align-items-center" href="#">
+          <a class="dropdown-item d-flex align-items-center" href="../auth/logout-process.php">
             <i class="bi bi-box-arrow-right"></i>
             <span>Sign Out</span>
           </a>
